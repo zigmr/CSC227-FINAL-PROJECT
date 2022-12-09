@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+        fieldset {
+            background-color: #eeeeee;
+            width: 300px;
+            height: auto;
+        }
+        legend {
+            padding: 20px 10px;
+        }
+        input {
+            margin: 10px;
+        }
+    </style>
+    <title>Shopping List</title>
+</head>
+
+<body>
+    <h1>Shopping List</h1>
+    <fieldset>
+        <legend>Enter your Shopping item below</legend>
+        <input type="text" id="userInput" ><br>
+        <button type="button" id="add" class = "button">Add To List</button>
+    </fieldset>
+
+    <fieldset>
+        <legend>Delete the first item in the array</legend>
+        <input id="DeleteFirst" class = "button" type="button" value="Delete First Item">
+    </fieldset>
+
+    <fieldset>
+        <legend>Delete the last item in the array</legend>
+        <input id="DeleteLAst"  class = "button" type="button" value="Delete Last Item">
+    </fieldset>
+
+    <fieldset>
+        <legend>Display array</legend>
+        <p id = "allItems"></p>
+    </fieldset>
+    <script >
+        let list = [];
+        
+        function addToList(){
+            var input = document.getElementById("userInput").value;
+            list.push(input); 
+            display()
+        }
+        
+        var addButton = document.getElementById("add");
+        addButton.addEventListener("click", addToList);
+        
+        var deleteFirst = document.getElementById("DeleteFirst");
+        deleteFirst.addEventListener("click", DeleteFirstItem);
+        
+        function DeleteFirstItem (){
+            list.shift();
+            display()
+        }
+        
+        var deleteLast = document.getElementById("DeleteLAst");
+        deleteLast.addEventListener("click", DeleteLAstItem);
+        
+        function DeleteLAstItem(){
+            list.pop();
+            display()
+        }
+        
+        function display(){
+            document.getElementById('allItems').innerHTML = list.join('<br>');
+        }        
+    </script>
+</body>
+</html>
